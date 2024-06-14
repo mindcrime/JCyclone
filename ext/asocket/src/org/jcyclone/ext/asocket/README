@@ -1,0 +1,6 @@
+This library provides a SEDA-based asynchronous sockets layer, using the 
+JCyclone platform.
+
+See ATcpClientSocket, ATcpServerSocket, and ATcpConnection for the basic APIs.
+
+

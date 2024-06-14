@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project name="junit-shared" default="junit">
+    <path id="compile-classpath">
+		<fileset dir="${basedir}">
+			<include name="lib/backport-util-concurrent.jar"/>
+		</fileset>
+	</path>
+
+    <path id="test-classpath">
+        <path refid="compile-classpath"/>
+        <pathelement path="build/classes"/>
+        <pathelement path="lib/junit-3.8.1.jar"/>
+    </path>
+
+    <path id="junit-runpath">
+        <path refid="test-classpath"/>
+        <pathelement location="build/test-classes"/>
+    </path>
+
+    <target name="setup-test-properties">
+        <property name="test" location="test"/>
+        <property name="test-classes" location="${build}/test-classes"/>
+        <property name="test-output" location="${build}/test-output"/>
+    </target>
+
+    <target name="setup-tests" depends="set-properties,setup-test-properties">
+        <mkdir dir="${test-classes}"/>
+    </target>
+
+    <target name="clean" depends="setup-tests">
+        <ant antfile="../share.xml" target="clean"/>
+        <delete dir="${test-classes}"/>
+        <delete>
+            <fileset dir="." includes="TEST-*Test.txt"/>
+        </delete>
+    </target>
+
+    <target name="compile-tests" depends="setup,setup-tests,compile"
+        description="Compiles tests">
+        <javac destdir="${test-classes}">
+            <src path="${test}"/>
+            <classpath refid="test-classpath"/>
+        </javac>
+    </target>
+
+    <target name="copy-config-files" depends="setup-tests"
+            description="copies JCyclone config test files">
+        <copy todir="${test-classes}" flatten="true">
+            <fileset dir=".">
+                <include name="**/*.cfg"/>
+            </fileset>
+        </copy>
+    </target>
+
+	<target name="jar" depends="junit"
+	    description="build jar file">
+		<ant target="jar" antfile="build.xml"/>
+	</target>
+
+    <target name="jar-tests" depends="junit"
+        description="Build jar file">
+        <jar destfile="${build}/dist/test-${jar.name}" basedir="${test-classes}"/>
+    </target>
+
+    <target name="junit" depends="compile-tests,copy-config-files"
+            description="run unit tests">
+        <mkdir dir="${test-output}"/>
+
+        <junit fork="true" haltonerror="false" haltonfailure="false" printsummary="true">
+            <batchtest todir="${test-output}">
+                <fileset dir="${test-classes}">
+                    <include name="**/*Test.class" />
+                </fileset>
+            </batchtest>
+
+            <formatter type="plain"/>
+            <classpath refid="junit-runpath" />
+        </junit>
+    </target>
+
+    <target name="onejunit" depends="compile-tests,copy-config-files" description="run just one unit test">
+        <mkdir dir="${test-output}"/>
+        <echo message="Testing class (${onejunit.testname})" />
+        <junit fork="true" haltonerror="false" haltonfailure="false" timeout="1200000">
+            <test name="${onejunit.testname}" todir="${test-output}" />
+
+            <classpath refid="junit-runpath" />
+            <formatter type="plain" />
+        </junit>
+        <exec executable="cat">
+            <arg value="${test-output}/TEST-${onejunit.testname}.txt"/>
+        </exec>
+    </target>
+</project>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+
+<project name="www" default="upload">
+
+	<property file="build.properties" />
+
+	<target name="upload">
+		<scp todir="${user}:${password}@shell.sourceforge.net:/home/groups/j/jc/jcyclone/htdocs">
+			<fileset dir=".">
+				<include name="**/*.html"/>
+				<include name="**/*.css"/>
+				<include name="**/*.gif"/>
+			</fileset>
+		</scp>
+	</target>
+
+</project>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+
+<project name="core" default="junit">
+    
+    <import file="../share.xml"/>
+    <import file="build-junit-shared.xml"/>
+</project>

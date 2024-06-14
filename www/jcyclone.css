@@ -1,0 +1,124 @@
+
+/* screen screen screen screen screen screen screen screen screen screen screen screen screen screen screen screen screen */
+
+/* ------------------- general styles  --------------------------- */
+
+/* >>>>>>>>>>>>>> text styles */
+
+body	{font-family: Arial, Helvetica, sans-serif; font-size: 12px; margin:0 0 0 0; background-color: #ffffff;}
+
+
+h1					{font-family: Arial, Helvetica, sans-serif; font-size: 22px; font-style: normal; font-weight: bold; color: #000000;}
+h2					{font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-style: normal; font-weight: bold; color: #255480; line-height:10px; vertical-align:sub;}
+h3					{font-family: Arial, Helvetica, sans-serif; font-size: 18px; font-style: normal; font-weight: bold; color: #000000;}
+h4					{font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-style: normal; font-weight: bold; color: #000000;}
+hr					{height: 1px; border: solid #D1D7DC 0px; border-top-width: 1px;}
+font,th,td,p,li		{font-family: Arial, Helvetica, sans-serif; font-size: 12px; }
+
+a:link,a:active,a:visited	{color : #255480; text-decoration:underline;}
+a:hover						{text-decoration: none; color : #6D8096; }
+
+
+
+/* >>>>>>>>>>>>>> table styles */
+
+table		{border:none; padding:0 0 0 0; font-family: Arial, Helvetica, sans-serif; font-size: 10px; border-collapse: collapse; border-spacing: none;}
+
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+td.row3	{ background-color: #D1D7DC; }
+.white_right	{background-image:URL(images/white_right.gif);}
+.white_right_bottom	{background-image:URL(images/white-bottom_right.gif);}
+.white_right_top	{background-image:URL(images/white-top_right.gif);}
+
+
+/* >>>>>>>>>>>>>>>>>   Form elements */
+
+textarea, select {background-color:#ffffff; color :#000000; font:normal 12px Arial, Helvetica, sans-serif; border:1px solid #828682; padding:5;}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	border:1px solid #828682;
+	padding:0 5;
+}
+
+/*input { border:1px solid #828682; text-indent : 2px; padding:0 5; }*/
+
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #ffffff;
+	font-weight : bold;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #ffffff;
+	font-weight : normal;
+}
+
+
+
+/* ----------------- specific styles  ---------------------- */
+
+/* >>>>> styles de navigation */
+
+/* Used for the navigation text, (Page 1,2,3 etc) and the navigation bar */
+.nav_top			{ font-weight: bold; font-size: 13px; color : #000000; border-bottom:1px dashed #083168;}
+.nav_bottom			{ font-weight: bold; font-size: 13px; color : #000000; border-top:1px dashed #083168;}
+a.nav			{ text-decoration: underline; color : #788797; }
+a.nav:hover		{ text-decoration: none; color: #6D8096; }
+
+
+
+/* >>>>> content styles */
+
+.stripes			{background-image:URL(images/fond.gif);}
+.content			{padding: 10 10;}
+.fade				{background-image:URL(images/fade.gif);}
+.fade_out			{background-image:URL(images/fade-out.gif);}
+.white				{background-color:#ffffff;}
+.white_content		{background-color:#ffffff; padding:5 10;}
+.backwhite			{background-color:#ffffff; padding:3 3;}
+.backgray			{background-color:#F0F6F7; padding:3 3;}
+.def				{background-color:#DDE3DB; font-size:10px; padding:2 2;}
+.add_comments		{color : #000000; padding:0; vertical-align:top;}
+
+.row_header			{background-color:#DDE3DB; font-size:12px; padding:5 3; border:0px solid #F0F7F7}
+
+
+/* >>>>>> frame title & content styles */
+.frametitle		{font-weight: bold; font-size: 16px; color : #000000; border-left:1px solid #828682; border-bottom:1px solid #828682; padding:2 5;}
+.framecontent		{ color : #000000; padding:8 15;}
+
+
+
+/* >>>>>> frame styles */
+
+.top		{background-image:URL(images/top.gif);}
+.right		{background-image:URL(images/right.gif);}
+.bottom		{background-image:URL(images/bottom.gif);}
+.left		{background-image:URL(images/left.gif);}
+
+
+
+/* >>>>>> menu styles */
+
+.menu		{color:#000000; border-bottom:1px solid #DFE2E8; font-size: 12px; padding: 3 5;}
+
+.padding5		{padding:5 5 5 5;}
+.padding10		{padding:10;}
+.padding0		{padding:0;}
+.padding10_top	{padding:10 0 0 0;}
+.note			{font-size: 16px;}
+.grille			{font-size: 16px;}
+
+
+
+/* >>>>> menu styles  */
+
+.menu_1		{font-weight:bold; color: #993300; font-size: 16px; padding: 2 5 2 5;}
+.menu_2		{font-weight:bold; font-size: 16px; padding: 2 5 2 5; border-top:1px solid #993300;}
+.menu_3		{font-size: 16px; padding: 2 5 2 5;}

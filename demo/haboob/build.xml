@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+
+
+<project name="haboob" default="jar">
+	<path id="compile-classpath">
+		<pathelement location="../../core/build/dist/jcyclone-core.jar"/>
+		<pathelement location="../../ext/http/build/dist/jcyclone-http.jar"/>
+		<pathelement location="../../ext/adisk/build/dist/jcyclone-adisk.jar"/>
+		<pathelement location="../../ext/asocket/build/dist/jcyclone-asocket.jar"/>
+		<pathelement location="../../ext/atls/build/dist/jcyclone-atls.jar"/>
+	</path>
+	<import file="../../share.xml"/>
+</project>

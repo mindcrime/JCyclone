@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+
+<project name="core" default="jar">
+
+	<path id="compile-classpath">
+		<fileset dir="${basedir}">
+			<include name="lib/backport-util-concurrent.jar"/>
+		</fileset>
+	</path>
+	
+	<import file="../share.xml"/>
+
+</project>

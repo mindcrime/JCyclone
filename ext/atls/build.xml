@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+
+<project name="atls" default="jar">
+	<path id="compile-classpath">
+		<pathelement location="../../core/build/dist/jcyclone-core.jar"/>
+		<pathelement location="../asocket/build/dist/jcyclone-asocket.jar"/>
+		<pathelement location="../http/build/dist/jcyclone-http.jar"/>
+
+		<pathelement location="/lib/cryptix.jar"/>
+		<pathelement location="lib/puretls-atls.jar"/>
+	</path>
+	<import file="../../share.xml"/>
+</project>

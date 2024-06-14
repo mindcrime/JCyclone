@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+
+<project name="adisk" default="jar">
+	<path id="compile-classpath">
+		<pathelement location="../../core/build/dist/jcyclone-core.jar"/>
+	</path>
+	<import file="../../share.xml"/>
+</project>

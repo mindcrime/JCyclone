@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+
+
+<project name="share">
+
+	<target name="set-properties">
+		<property name="app.name" value="JCyclone"/>
+		<property name="api" location="api"/>
+		<property name="src" location="src"/>
+		<property name="jar.name" value="jcyclone-${ant.project.name}.jar"/>
+		<property name="dist.name" value="jcyclone-${ant.project.name}-release.zip"/>
+		<property name="docs" location="docs"/>
+		<property name="build" location="build"/>
+	</target>
+
+	<target name="setup" depends="set-properties">
+		<mkdir dir="${build}/classes"/>
+		<mkdir dir="${build}/dist"/>
+		<mkdir dir="${build}/dist/lib"/>
+		<mkdir  dir="${docs}"/>
+		<mkdir dir="${api}"/>
+	</target>
+
+	<target name="clean" depends="set-properties"
+		description="Clean generated files">
+		<delete dir="${build}"/>
+		<delete dir="${docs}"/>
+	</target>
+
+	<target name="compile" depends="setup"
+		description="Compile Java source files">
+		<javac destdir="${build}/classes">
+			<src path="${api}"/>
+			<src path="${src}"/>
+			<classpath refid="compile-classpath"/>
+		</javac>
+	</target>
+
+	<target name="javadoc" depends="set-properties">
+		<javadoc
+			destdir="${docs}"
+			packagenames="*"
+			>
+			<classpath refid="compile-classpath"/>
+
+			<sourcepath>
+				<pathelement path="${api}"/>
+				<pathelement path="${src}"/>
+			</sourcepath>
+
+			<doclet name="com.sun.tools.doclets.standard.Standard">
+				<param name="-author"/>
+				<param name="-version"/>
+				<param name="-use"/>
+				<param name="-breakiterator"/>
+				<param name="-link" value="http://java.sun.com/j2se/1.4/docs/api"/>
+				<param name="-link" value="http://java.sun.com/j2ee/sdk_1.3/techdocs/api"/>
+				<param name="-doctitle" value="${app.name} ${ant.project.name}"/>
+				<param name="-windowtitle" value="${app.name} ${ant.project.name} API"/>
+				<param name="-bottom" value="&quot;Copyright &#169; ${year}. All Rights Reserved.&quot;"/>
+			</doclet>
+		</javadoc>
+	</target>
+
+	<target name="jar" depends="compile"
+		description="Build jar file">
+		<jar destfile="${build}/dist/${jar.name}" basedir="${build}/classes"/>
+	</target>
+
+	<target name="dist" depends="set-properties, clean, jar, javadoc"
+		description="Create distribution folders">
+		<copy     todir="${build}/dist">
+			<fileset dir=".">
+				<include name="LICENSE"/>
+				<include name="README"/>
+				<include name="docs/**"/>
+				<include name="lib/**"/>
+			</fileset>
+		</copy>
+		<copy    todir="${build}/dist/src">
+			<fileset dir="${src}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+		<copy    todir="${build}/dist/src">
+			<fileset dir="${api}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+		<zip zipfile="${dist.name}" >
+			<zipfileset dir="${build}/dist"/>
+		</zip>
+	</target>
+
+</project>
